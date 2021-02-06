@@ -4,12 +4,24 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+## Nurkholis Yusuf
 
-### More Information
+Teknisi lapangan _Retail POS_ dan _Auto ID_ sejak tahun 2013 disalah satu perusahaan dibidang IT Solution cabang Yogyakarta.
 
-A place to include any other types of information that you'd like to include about yourself.
+Yogyakarta, ID.
+
+### Pengalaman
+
+- Instalasi _Hardware_ dan _Software_ Retail POS.
+- Instalasi Jaringan, _Server_ dan _Router_ untuk _POS System_.
+- Terbiasa dengan _Operating System_ _Linux_ dan _Windows_.
+
+### Sedang mendalami
+
+- HTML, CSS, dan Javascript
+- PHP
+- Java untuk Android.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[olizyusuf22@gmail.com](mailto:olizyusuf22@gmail.com)
