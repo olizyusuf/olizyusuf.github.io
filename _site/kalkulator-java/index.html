@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kalkulator Sederhana dengan JAVA. – Nurkholis Yusuf – Teknisi lapangan Retail POS dan Auto ID.</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Berikut pembuatan kalkulator sederhana menggunakan Java. kode dibawah ini sangat sederhana dengan operator logika if else if else.
+" />
+    <meta property="og:description" content="Berikut pembuatan kalkulator sederhana menggunakan Java. kode dibawah ini sangat sederhana dengan operator logika if else if else.
+" />
+    
+    <meta name="author" content="Nurkholis Yusuf" />
+
+    
+    <meta property="og:title" content="Kalkulator Sederhana dengan JAVA." />
+    <meta property="twitter:title" content="Kalkulator Sederhana dengan JAVA." />
+    
+
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Nurkholis Yusuf - Teknisi lapangan Retail POS dan Auto ID."
+    href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <a href="/" class="site-avatar"><img src="https://pbs.twimg.com/profile_images/1316291724616986624/JdW8kvau_400x400.jpg" /></a>
+
+        <div class="site-info">
+          <h1 class="site-name"><a href="/">Nurkholis Yusuf</a></h1>
+          <p class="site-description">Teknisi lapangan Retail POS dan Auto ID.</p>
+        </div>
+
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/project">Project</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    <article class="post">
+  <h1>Kalkulator Sederhana dengan JAVA.</h1>
+
+  <div class="entry">
+    <p>Berikut pembuatan kalkulator sederhana menggunakan Java. kode dibawah ini sangat sederhana dengan operator logika if else if else.</p>
+
+<p>Langkah awal membuat new java package.
+Setelah itu buat Java class dengan nama Kalkulator
+Sebenarnya jika ingin membuat kalkulator sederhana ini sangat mudah jika sudah memahami dasar-dasar pemrograman java. biasanya Kalkulator sederhana ini masuk dalam tugas makul dari dosen.
+Dengan begitu tinggal ketikan kode dibawah ini :</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="cm">/**
+ *
+ * @author oliz
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Kalkulator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">// deklarasi</span>
+        <span class="kt">int</span> <span class="n">nilai1</span><span class="o">,</span> <span class="n">nilai2</span><span class="o">,</span> <span class="n">hasil</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">operator</span><span class="o">;</span>
+
+        <span class="c1">// input</span>
+        <span class="nc">Scanner</span> <span class="n">keyboard</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+        <span class="c1">// proses</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"=== Kalkulator Sederhana ==="</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Masukan nilai-1: "</span><span class="o">);</span>
+        <span class="n">nilai1</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"pilih operator +, -, x, :, %: "</span><span class="o">);</span>
+        <span class="n">operator</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Masukan nilai-2: "</span><span class="o">);</span>
+        <span class="n">nilai2</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="c1">// menghitung nilai sesuai operator aritmatika</span>
+        <span class="k">if</span> <span class="o">(</span> <span class="n">operator</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"+"</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">hasil</span> <span class="o">=</span> <span class="n">nilai1</span> <span class="o">+</span> <span class="n">nilai2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span> <span class="n">operator</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"-"</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">hasil</span> <span class="o">=</span> <span class="n">nilai1</span> <span class="o">-</span> <span class="n">nilai2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span> <span class="n">operator</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"x"</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">hasil</span> <span class="o">=</span> <span class="n">nilai1</span> <span class="o">*</span> <span class="n">nilai2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span> <span class="n">operator</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">":"</span><span class="o">)</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">hasil</span> <span class="o">=</span> <span class="n">nilai1</span> <span class="o">/</span> <span class="n">nilai2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">hasil</span> <span class="o">=</span> <span class="n">nilai1</span> <span class="o">%</span> <span class="n">nilai2</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hasil: "</span> <span class="o">+</span> <span class="n">hasil</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Penjelasannya membuat deklarasi int nilai1, nilai2, hasil; dan String operator; lalu proses input menggunakan import java.util.Scanner; dengan membuat input deklarasi Scanner keyboard = new Scanner(System.in); . dengan begitu selanjut menangkap input dengan proses keyboard.nextInt(); untuk nilai int dan keyboard.next(); untuk nilai string. selanjutnya proses menghitung sesuai operator aritmatika yang di input bentuk string dengan mengecek melalui proses operator.equalsIgnoreCase(“+”) yaitu mengecek tanpa mengecek camelcasenya. setelah itu proses output akan menampikan hasil yang telah diinput tadi.</p>
+
+<p>Setelah selesai dan pastikan penulisan dengan benar maka eksekusi kode tersebut, jika menggunakan netbeans tinggal pencet shift + f6 atau klik kanan run. Maka hasil dari eksekusi tersebut seperti berikut :</p>
+
+<p><img src="/images/kalkulatorjava.png" alt="kalkualtor" /></p>
+
+  </div>
+
+  <div class="date">
+    Written on February  6, 2021
+  </div>
+
+  
+</article>
+
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        
+
+
+
+<a href="https://github.com/olizyusuf"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/ziloBois"><i class="svg-icon twitter"></i></a>
+
+
+
+      </footer>
+    </div>
+  </div>
+
+  
+
+</body>
+
+</html>
