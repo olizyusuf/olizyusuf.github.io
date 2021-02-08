@@ -20,7 +20,6 @@ Yogyakarta, ID.
 
 - HTML, CSS, dan Javascript
 - PHP
-- Java untuk Android.
 
 ### Contact me
 
