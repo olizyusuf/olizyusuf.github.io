@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Panduan Emulasi LPT Printer pada Port USB. – Nurkholis Yusuf – Teknisi lapangan Retail POS dan Auto ID.</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Halo semua, kali ini saya akan berbagi pengalaman perihal port LPT yang notabene masih dipakai pada program lama yang membutuhkan direct print ke LPT tetapi menggunakan printer yang memakai port USB. tutorial ini saya sudah implementasikan pada printer STAR receipt printer dengan OS Windows 7, untuk printer lain mungkin bisa diimplementasikan. berikut panduannya:
+" />
+    <meta property="og:description" content="Halo semua, kali ini saya akan berbagi pengalaman perihal port LPT yang notabene masih dipakai pada program lama yang membutuhkan direct print ke LPT tetapi menggunakan printer yang memakai port USB. tutorial ini saya sudah implementasikan pada printer STAR receipt printer dengan OS Windows 7, untuk printer lain mungkin bisa diimplementasikan. berikut panduannya:
+" />
+    
+    <meta name="author" content="Nurkholis Yusuf" />
+
+    
+    <meta property="og:title" content="Panduan Emulasi LPT Printer pada Port USB." />
+    <meta property="twitter:title" content="Panduan Emulasi LPT Printer pada Port USB." />
+    
+
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Nurkholis Yusuf - Teknisi lapangan Retail POS dan Auto ID."
+    href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/olizyusuf/olizyusuf.github.io/master/images/avatar.jpg" /></a>
+
+        <div class="site-info">
+          <h1 class="site-name"><a href="/">Nurkholis Yusuf</a></h1>
+          <p class="site-description">Teknisi lapangan Retail POS dan Auto ID.</p>
+        </div>
+
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/portofolio">Portofolio</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    <article class="post">
+  <h1>Panduan Emulasi LPT Printer pada Port USB.</h1>
+
+  <div class="entry">
+    <p>Halo semua, kali ini saya akan berbagi pengalaman perihal port LPT yang notabene masih dipakai pada program lama yang membutuhkan direct print ke LPT tetapi menggunakan printer yang memakai port USB. tutorial ini saya sudah implementasikan pada printer STAR receipt printer dengan OS Windows 7, untuk printer lain mungkin bisa diimplementasikan. berikut panduannya:</p>
+
+<ol>
+  <li>Instal driver Printer STAR menggunakan port USB dan dipastikan test print dengan baik.</li>
+  <li>Selanjutnya printer di Sharing dengan nama <code class="language-plaintext highlighter-rouge">printer</code>.</li>
+  <li>Instal driver printer STAR melalui Add Printer secara manual dan gunakan pilihan port <code class="language-plaintext highlighter-rouge">LPT</code> dan ubah menjadi Default printer.</li>
+  <li>Buat loop back adapter melalui <code class="language-plaintext highlighter-rouge">device manager</code> yaitu <code class="language-plaintext highlighter-rouge">add new hardware -&gt; Advance List -&gt; Network Adapters -&gt; Microsoft -&gt; Microsoft Loopback Adapter</code> , dan cek di network devices jika sudah muncul berarti sudah berhasil membuat loop back adapter.</li>
+  <li>Setting IP pada loop back adapter dengan IP <code class="language-plaintext highlighter-rouge">192.168.77.1/24</code>.</li>
+  <li>Buat mapping printer dengan perintah <code class="language-plaintext highlighter-rouge">NET USE LPT1:\\IP_LOOPING\NAMA_SHARING_PRINTER /PERSISTENT:YES</code></li>
+</ol>
+
+<p>*** contoh:
+<code class="language-plaintext highlighter-rouge">NET USE LPT1: \\192.168.77.1\PRINTER /PERSISTENT:YES</code></p>
+
+<hr />
+
+<p>Perintah mapping ini sebaiknya ditest dahulu pada command promt, apabila command tersebut success / tidak ada error, maka dilakukan test print komunikasi <code class="language-plaintext highlighter-rouge">DIR&gt;LPT1</code> menggunakan command prompt, apabila sukses maka perintah maping
+diatas dibuatkan batch file. kemudiakan diletakan di startup tujuan agar setiap restart printer tersebut tereksekusi.</p>
+
+<p>Anda bisa menemukan repo github saya di <a href="https://github.com/olizyusuf">Oliz Yusuf</a> on GitHub.</p>
+
+  </div>
+
+  <div class="date">
+    Written on February 13, 2021
+  </div>
+
+  
+</article>
+
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        
+
+
+
+<a href="https://github.com/olizyusuf"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/ziloBois"><i class="svg-icon twitter"></i></a>
+
+
+
+      </footer>
+    </div>
+  </div>
+
+  
+
+</body>
+
+</html>

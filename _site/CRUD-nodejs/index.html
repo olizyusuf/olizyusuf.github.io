@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CRUD dengan Node JS dan MySQL. – Nurkholis Yusuf – Teknisi lapangan Retail POS dan Auto ID.</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="membuat crud sederhana dengan Node JS, Framework Express JS, template engine EJS dan Database SQL dmbs menggunakan mysql.
+" />
+    <meta property="og:description" content="membuat crud sederhana dengan Node JS, Framework Express JS, template engine EJS dan Database SQL dmbs menggunakan mysql.
+" />
+    
+    <meta name="author" content="Nurkholis Yusuf" />
+
+    
+    <meta property="og:title" content="CRUD dengan Node JS dan MySQL." />
+    <meta property="twitter:title" content="CRUD dengan Node JS dan MySQL." />
+    
+
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Nurkholis Yusuf - Teknisi lapangan Retail POS dan Auto ID."
+    href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/olizyusuf/olizyusuf.github.io/master/images/avatar.jpg" /></a>
+
+        <div class="site-info">
+          <h1 class="site-name"><a href="/">Nurkholis Yusuf</a></h1>
+          <p class="site-description">Teknisi lapangan Retail POS dan Auto ID.</p>
+        </div>
+
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/portofolio">Portofolio</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    <article class="post">
+  <h1>CRUD dengan Node JS dan MySQL.</h1>
+
+  <div class="entry">
+    <p>membuat crud sederhana dengan Node JS, Framework Express JS, template engine EJS dan Database SQL dmbs menggunakan mysql.</p>
+
+<p>pertama install dulu package express js, template engine ejs dan mysql.</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm install --save express ejs mysql</code></p>
+
+<p>selanjutnya buat database dengan nama <code class="language-plaintext highlighter-rouge">dbnodelogin</code></p>
+
+<p>buat table bernama <code class="language-plaintext highlighter-rouge">tbl_barang</code> dengan isi seperti berikut:</p>
+
+<pre><code class="language-SQL">CREATE TABLE `tbl_barang` (
+  `id` int(11) NOT NULL,
+  `kd_brg` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `hrg_beli` int(11) NOT NULL,
+  `hrg_jual` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+</code></pre>
+
+<p>selanjutnya buat file <code class="language-plaintext highlighter-rouge">app.js</code> dan ketik kode seperti berikut:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">urlencoded</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">body-parser</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">mysql</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">port</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// untuk mengakses folder public css</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">"</span><span class="s2">public</span><span class="dl">"</span><span class="p">));</span>
+<span class="c1">// untuk mengakses nilai form</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}));</span>
+
+<span class="c1">// koneksi ke database</span>
+<span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+  <span class="na">host</span><span class="p">:</span> <span class="dl">"</span><span class="s2">localhost</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">user</span><span class="p">:</span> <span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">password</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="na">database</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dbnodelogin</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">connection</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// routing</span>
+
+<span class="c1">// halaman index</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">index.ejs</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// menampilkan list barang</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">SELECT * FROM tbl_barang</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">listbrg.ejs</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">tbl_barang</span><span class="p">:</span> <span class="nx">results</span> <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// menuju halaman add barang</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/addbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">addbrg.ejs</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// add barang dari form</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/createbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">kd_brg</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">kd_barang</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">nama</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">nama</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">hrg_beli</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_beli</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">hrg_jual</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_jual</span><span class="p">;</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">INSERT INTO tbl_barang (kd_brg,nama,hrg_beli,hrg_jual) VALUES (?,?,?,?)</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">kd_brg</span><span class="p">,</span> <span class="nx">nama</span><span class="p">,</span> <span class="nx">hrg_beli</span><span class="p">,</span> <span class="nx">hrg_jual</span><span class="p">],</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// hapus barang</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/deletebrg/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">DELETE FROM tbl_barang WHERE id=?</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">id</span><span class="p">],</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// menampilkan edit barang</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/editbrg/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">SELECT * FROM tbl_barang WHERE id=?</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">id</span><span class="p">],</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">editbrg.ejs</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">tbl_barang</span><span class="p">:</span> <span class="nx">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// update barang</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/update/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">kd_brg</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">kd_barang</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">nama</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">nama</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">hrg_beli</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_beli</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">hrg_jual</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_jual</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">UPDATE tbl_barang SET kd_brg=?, nama=?, hrg_beli=?, hrg_jual=? WHERE id=?</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">kd_brg</span><span class="p">,</span> <span class="nx">nama</span><span class="p">,</span> <span class="nx">hrg_beli</span><span class="p">,</span> <span class="nx">hrg_jual</span><span class="p">,</span> <span class="nx">id</span><span class="p">],</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server berjalan di port </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">port</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>untuk menampilkan ke halaman list barang, tambah, edit dan hapus barang, buat folder dengan nama <code class="language-plaintext highlighter-rouge">views</code> dan buat 4 file yaitu <code class="language-plaintext highlighter-rouge">index.ejs, addbrg.ejs, editbrg.ejs, listbrg.ejs</code></p>
+
+<p>untuk <code class="language-plaintext highlighter-rouge">index.ejs</code> kode seperti berikut:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Selamat Datang di Daftar Barang<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/listbrg"</span><span class="nt">&gt;</span>Detail Barang<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>kode <code class="language-plaintext highlighter-rouge">addbrg.ejs</code> berikut:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Add Barang<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/createbrg"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Kode Barang<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"kd_barang"</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Nama Barang<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"nama"</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Harga Beli<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"hrg_beli"</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Harga Jual<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"hrg_jual"</span> <span class="na">required</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"tambahkan"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>kode <code class="language-plaintext highlighter-rouge">editbrg.ejs</code> berikut:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Edit Barang<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/update/&lt;%= tbl_barang.id %&gt;"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Kode Barang<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"kd_barang"</span> <span class="na">value=</span><span class="s">"&lt;%= tbl_barang.kd_brg %&gt;"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Nama Barang<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"nama"</span> <span class="na">value=</span><span class="s">"&lt;%= tbl_barang.nama %&gt;"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Harga Beli<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"hrg_beli"</span> <span class="na">value=</span><span class="s">"&lt;%= tbl_barang.hrg_beli %&gt;"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Harga Jual<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"hrg_jual"</span> <span class="na">value=</span><span class="s">"&lt;%= tbl_barang.hrg_jual %&gt;"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Perbaharui"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>kode <code class="language-plaintext highlighter-rouge">listbrg.ejs</code> berikut:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>List Daftar Barang<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/addbrg"</span><span class="nt">&gt;</span>Add Barang<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1px"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Kode Barang<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Nama Barang<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Harga Beli<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Harga Jual<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;</span><span class="err">%</span> <span class="na">tbl_barang.forEach((barang) =</span><span class="err">&gt; </span><span class="s">{</span> <span class="err">%</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span> <span class="na">barang.kd_brg</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span> <span class="na">barang.nama</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span> <span class="na">barang.hrg_beli</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;</span><span class="err">%=</span> <span class="na">barang.hrg_jual</span> <span class="err">%</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>
+          <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/deletebrg/&lt;%= barang.id %&gt;"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Hapus"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/editbrg/&lt;%= barang.id %&gt;"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;</span><span class="err">%</span> <span class="err">})</span> <span class="err">%</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>sekarang jalankan servernya dengan perintah <code class="language-plaintext highlighter-rouge">node app.js</code> dan akan berjalan pada <code class="language-plaintext highlighter-rouge">http://localhost:3000</code></p>
+
+<p>ini adalah tutorial CRUD Node Js Sederhana.</p>
+
+<p>Terima kasih.</p>
+
+<p>Anda bisa menemukan repo github saya di <a href="https://github.com/olizyusuf">Oliz Yusuf</a> on GitHub.</p>
+
+  </div>
+
+  <div class="date">
+    Written on February 13, 2021
+  </div>
+
+  
+</article>
+
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        
+
+
+
+<a href="https://github.com/olizyusuf"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/ziloBois"><i class="svg-icon twitter"></i></a>
+
+
+
+      </footer>
+    </div>
+  </div>
+
+  
+
+</body>
+
+</html>
