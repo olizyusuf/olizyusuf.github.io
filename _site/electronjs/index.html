@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Desktop App menggunakan Electron JS. – Nurkholis Yusuf – Teknisi lapangan Retail POS dan Auto ID.</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Dengan perkembangan teknologi sekarang, Electron JS menawarakan pembuatan aplikasi Desktop yang menggunakan web HTML, CSS, dan Javascript.
+saya kali ini akan membagikan cara instalasi Electron JS.
+" />
+    <meta property="og:description" content="Dengan perkembangan teknologi sekarang, Electron JS menawarakan pembuatan aplikasi Desktop yang menggunakan web HTML, CSS, dan Javascript.
+saya kali ini akan membagikan cara instalasi Electron JS.
+" />
+    
+    <meta name="author" content="Nurkholis Yusuf" />
+
+    
+    <meta property="og:title" content="Desktop App menggunakan Electron JS." />
+    <meta property="twitter:title" content="Desktop App menggunakan Electron JS." />
+    
+
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Nurkholis Yusuf - Teknisi lapangan Retail POS dan Auto ID."
+    href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/olizyusuf/olizyusuf.github.io/master/images/avatar.jpg" /></a>
+
+        <div class="site-info">
+          <h1 class="site-name"><a href="/">Nurkholis Yusuf</a></h1>
+          <p class="site-description">Teknisi lapangan Retail POS dan Auto ID.</p>
+        </div>
+
+        <nav>
+          <a href="/">Blog</a>
+          <a href="/portofolio">Portofolio</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    <article class="post">
+  <h1>Desktop App menggunakan Electron JS.</h1>
+
+  <div class="entry">
+    <p>Dengan perkembangan teknologi sekarang, Electron JS menawarakan pembuatan aplikasi Desktop yang menggunakan web HTML, CSS, dan Javascript.
+saya kali ini akan membagikan cara instalasi Electron JS.</p>
+
+<p>clone dari repo electron.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git clone https://github.com/electron/electron-quick-start</code></p>
+
+<p>buka folder yang telah di clone</p>
+
+<p><code class="language-plaintext highlighter-rouge">cd electron-quick-start</code></p>
+
+<p>selanjutnya install</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm install</code></p>
+
+<p>setelah selesai tinggal dicoba saja.</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm start</code></p>
+
+<p>voilaaa berhasil dibuka dengan hasil seperti ini.<br />
+<img src="/images/electron-quick.png" alt="electronjs" /></p>
+
+<p>sekarang saya akan mencoba membuat 2 halaman dengan menambahkan <code class="language-plaintext highlighter-rouge">about.html</code> dan mengedit file <code class="language-plaintext highlighter-rouge">index.html</code></p>
+
+<p><img src="/images/vscode.png" alt="electronjs2" /></p>
+
+<p>isi kode pada <code class="language-plaintext highlighter-rouge">about.html</code> sebagai berikut:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP --&gt;</span>
+    <span class="nt">&lt;meta</span>
+      <span class="na">http-equiv=</span><span class="s">"Content-Security-Policy"</span>
+      <span class="na">content=</span><span class="s">"default-src 'self'; script-src 'self'"</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span>
+      <span class="na">http-equiv=</span><span class="s">"X-Content-Security-Policy"</span>
+      <span class="na">content=</span><span class="s">"default-src 'self'; script-src 'self'"</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Home<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Selamat Datang.<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"about.html"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>Aplikasi ini dibuat menggunakan electron js.<span class="nt">&lt;/p&gt;</span>
+
+    <span class="c">&lt;!-- You can also require other files to run in this process --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./renderer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>dan pada <code class="language-plaintext highlighter-rouge">about.html</code> sebagai berikut:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP --&gt;</span>
+    <span class="nt">&lt;meta</span>
+      <span class="na">http-equiv=</span><span class="s">"Content-Security-Policy"</span>
+      <span class="na">content=</span><span class="s">"default-src 'self'; script-src 'self'"</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span>
+      <span class="na">http-equiv=</span><span class="s">"X-Content-Security-Policy"</span>
+      <span class="na">content=</span><span class="s">"default-src 'self'; script-src 'self'"</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>About<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Ini Adalah Halaman About<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"index.html"</span><span class="nt">&gt;</span>Kembali ke Halaman Home.<span class="nt">&lt;/a&gt;</span>
+
+    <span class="c">&lt;!-- You can also require other files to run in this process --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./renderer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>hasilnya akan seperti ini</p>
+
+<p><img src="/images/appelectron.gif" alt="electronjs3" /></p>
+
+<p>teman-teman dapat mengembangkannya lagi dan ini memudahkan kita sebagai developer yang senang menggunakan bahasa pemrograman
+javascript.</p>
+
+<p>Anda bisa menemukan repo github saya di <a href="https://github.com/olizyusuf">Oliz Yusuf</a> on GitHub.</p>
+
+  </div>
+
+  <div class="date">
+    Written on February 22, 2021
+  </div>
+
+  
+</article>
+
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        
+
+
+
+<a href="https://github.com/olizyusuf"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/nurkholis-yusuf-b06826161"><i class="svg-icon linkedin"></i></a>
+
+
+<a href="https://www.twitter.com/ziloBois"><i class="svg-icon twitter"></i></a>
+
+
+
+      </footer>
+    </div>
+  </div>
+
+  
+
+</body>
+
+</html>
