@@ -33,7 +33,7 @@ Membangun website charity untuk komunitas Suara Hati menggunakan blogspot dan se
 Membangun aplikasi web dengan Framework Codeigniter 3 untuk Laras Griya Management, aplikasi ini sebagai pengganti bukutamu acara pernikahan di era pandemi covid19 diganti kedalam bentuk digitalisasi. Berkolaborasi dengan [Fala](https://github.com/arullfalla)
 ![appgw]({{ site.baseurl }}/images/porto1.png)
 
-### 2. To Do List App ReactJs
+### 2. [To Do List App (ReactJS)](http://olizyusuf.github.io/todolistreactjs/)
 
 Aplikasi To Do List menggunakan FrameWork JavaScript
 ![todolist]({{ site.baseurl }}/images/todolistapp.png)
