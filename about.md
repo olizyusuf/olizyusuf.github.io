@@ -10,11 +10,11 @@ Teknisi lapangan _Retail POS_ dan _Auto ID_ sejak tahun 2013 disalah satu perusa
 
 Yogyakarta, ID.
 
-### Pengalaman
+### Skill
 
-- Instalasi _Hardware_ dan _Software_ Retail POS.
-- Instalasi Jaringan, _Server_ dan _Router_ untuk _POS System_.
-- Terbiasa dengan _Operating System_ _Linux_ dan _Windows_.
+- Instalasi & _Troubleshooting_ _Hardware_ maupun _Software_ Retail POS.
+- Instalasi & _Troubleshooting_ Jaringan, _Server_ dan _Router_.
+- Instalasi & _Troubleshooting_ _Operating System_ _Linux_ dan _Windows_.
 
 ### Sedang mendalami
 
