@@ -12,6 +12,6 @@ permalink: /jasa/
 
 Silahkan kontak saya di :
 
-Email :[olizyusuf22@gmail.com](mailto:olizyusuf22@gmail.com)
+Email : [olizyusuf22@gmail.com](mailto:olizyusuf22@gmail.com)
 
 Telegram : [olizyusuf](https://t.me/olizyusuf)

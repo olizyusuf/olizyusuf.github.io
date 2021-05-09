@@ -10,15 +10,14 @@ Teknisi lapangan _Retail POS_ dan _Auto ID_ sejak tahun 2013 disalah satu perusa
 
 Yogyakarta, ID.
 
+> Experienced Information Technology Support Technician with a demonstrated history of working in the information technology and services industry. Skilled in Technical Support, Software Implementation, Databases, Point Of Sale (POS) System, and Hardware Support. Strong information technology professional graduated from STIE Isti Ekatana Upaweda.
+
 ### Skill
 
-- Instalasi & _Troubleshooting_ _Hardware_ maupun _Software_ Retail POS.
-- Instalasi & _Troubleshooting_ Jaringan, _Server_ dan _Router_.
-- Instalasi & _Troubleshooting_ _Operating System_ _Linux_ dan _Windows_.
-
-### Sedang mendalami
-
-- HTML, CSS, dan Javascript
+- IT Hardware Support
+- Software Implementation
+- Network Engineering
+- HTML, CSS, Javascript
 - PHP
 
 ### Contact me
