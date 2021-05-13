@@ -4,12 +4,19 @@ title: Backend dengan framework Hapi
 ---
 
 Buat folder dengan nama hapi-web-server dahulu
+
 `mkdir hapi-web-server`
+
 buka folder yang sudah dibuat
+
 `cd hapi-web-server`
+
 selanjutnya yaitu inisialisasi `npm init --y` supaya langsung saja sy tambahkan --y
+
 jika sudah maka kita lanjut membuat 2 file yaitu `server.js` dan `routes.js`
+
 buka file `package.json` setting seperti berikut:
+
 ```
 {
   "name": "hapi-web-server",
