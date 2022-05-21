@@ -33,6 +33,7 @@ Building a web application with the Codeigniter 3 Framework for Laras Griya Mana
 App To Do List using FrameWork JavaScript
 ![todolist]({{ site.baseurl }}/images/todolistapp.png)
 
-### 3. [Swalayan Apik](http://olizyusuf.github.io/)
+### 4. [Swalayan Member](http://olizyusuf.github.io/)
 
-Building aplication Member Aplikasi for Supermarket.
+Building aplication Member Aplikasi for Supermarket using Flutter.
+Promo, Member, and Setting Page.
