@@ -6,19 +6,19 @@ permalink: /about/
 
 ## Nurkholis Yusuf
 
-IT Field Engineer Point Of Sales and Auto ID since 2013 - present in Kahar Duta Sarana Company.
+IT Support Since 2010.
 
 Location Yogyakarta, ID.
 
-Experienced Information Technology Support Technician with a demonstrated history of working in the information technology and services industry. Skilled in Technical Support, Software Implementation, Databases, Point Of Sale (POS) System, Auto ID, and Hardware Support. Strong information technology professional graduated from STIE Isti Ekatana Upaweda.
+Experienced Information Technology Support Technician with a demonstrated history of working in the information technology and services industry. Skilled in Technical Support, Software Implementation, Network, Databases, Point Of Sale (POS) System, Auto ID, and Hardware Support. Strong information technology professional.
 
 ### Skill
 
-- IT Hardware Support.
+- IT Support.
 - Software Implementation.
-- Network Engineering.
-- HTML, CSS, Javascript.
-- PHP.
+- Network.
+- Flutter mobile android.
+- Basic HTML, CSS, Javascript and PHP.
 
 ### Contact me
 
