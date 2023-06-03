@@ -4,11 +4,10 @@ title: Jasa
 permalink: /jasa/
 ---
 
-### Menerima pembuatan website
+### Menerima Pembuatan Aplikasi
 
-1. Landing Page (Static Site, Wordpress, Codeigniter).
-2. Web App (Codeigniter).
-3. Aplikasi Point Of Sales (Base On Windows).
+1. Landing Page (Static Site, Wordpress).
+2. Mobile Apps (Flutter, SQLite).
 
 Silahkan kontak saya di :
 
