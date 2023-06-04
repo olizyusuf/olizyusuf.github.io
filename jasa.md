@@ -6,8 +6,8 @@ permalink: /jasa/
 
 ### Menerima Pembuatan Aplikasi
 
-1. Landing Page (Static Site, Wordpress).
-2. Mobile Apps (Flutter, SQLite).
+1. Mobile Apps (Flutter, SQLite).
+2. Landing Page (Static Site, Wordpress).
 
 Silahkan kontak saya di :
 

@@ -12,12 +12,15 @@ Location Yogyakarta, ID.
 
 Experienced Information Technology Support Technician with a demonstrated history of working in the information technology and services industry. Skilled in Technical Support, Software Implementation, Network, Databases, Point Of Sale (POS) System, Auto ID, and Hardware Support. Strong information technology professional.
 
+Freelance Build Mobile Android App using Flutter.
+
 ### Skill
 
 - IT Support.
 - Software Implementation.
 - Network.
 - Flutter mobile android.
+- Database Sqlite.
 - Basic HTML, CSS, Javascript and PHP.
 
 ### Contact me

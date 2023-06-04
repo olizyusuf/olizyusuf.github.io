@@ -37,3 +37,9 @@ App To Do List using FrameWork JavaScript
 
 Building aplication Member Aplikasi for Supermarket using Flutter.
 Promo, Member, and Setting Page.
+
+
+### 5. [Stock Count]
+
+Apps for Counting your stock with master data feature and Scan with your camera or connect to barcode scanner bluetooth or usb cable.
+you can control stock opname or stock in.
