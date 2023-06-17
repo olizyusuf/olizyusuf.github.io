@@ -4,11 +4,9 @@ title: Portofolio
 permalink: /portofolio/
 ---
 
-My Portofolio.
+## IT Field Engineer.
 
-## IT Field Engineer Point Of Sales and Auto ID.
-
-Responsible for supporting the company's KDS client at all levels as part of a IT Support. Ensuring that all hardware and software is configured and installed correctly.
+Responsible for supporting the company's KDS client at all levels as part of a IT Field Engineer. Ensuring that all hardware and software is configured and installed correctly.
 
 Duties:
 
@@ -17,9 +15,11 @@ Duties:
 - Supporting users over the telephone and remote.
 - Travelling to client sites to help with install, repair, deployment, and troubleshooting.
 
-## Web Dev.
+Documentation : [Click here](http://olizyusuf.github.io/)
 
-### 1. [Website Informasi Komunitas Suara Hati](http://suara-hati.org)
+## Freelance Software Developer.
+
+### 1. Website Informasi Komunitas Suara Hati
 
 Build a charity website for the Suara Hati community using blogspot and simultaneously fill in the content therein.
 
@@ -38,8 +38,7 @@ App To Do List using FrameWork JavaScript
 Building aplication Member Aplikasi for Supermarket using Flutter.
 Promo, Member, and Setting Page.
 
-
-### 5. [Stock Count]
+### 5. Stock Count
 
 Apps for Counting your stock with master data feature and Scan with your camera or connect to barcode scanner bluetooth or usb cable.
 you can control stock opname or stock in.
