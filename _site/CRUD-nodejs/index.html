@@ -11,10 +11,8 @@
 
     
     <meta name="description" content="membuat crud sederhana dengan Node JS, Framework Express JS, template engine EJS dan Database SQL dmbs menggunakan mysql.
-
 " />
     <meta property="og:description" content="membuat crud sederhana dengan Node JS, Framework Express JS, template engine EJS dan Database SQL dmbs menggunakan mysql.
-
 " />
     
     <meta name="author" content="Nurkholis Yusuf" />
@@ -83,105 +81,105 @@
 
 <p>selanjutnya buat file <code class="language-plaintext highlighter-rouge">app.js</code> dan ketik kode seperti berikut:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">urlencoded</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">body-parser</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">mysql</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">urlencoded</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">body-parser</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">mysql</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">port</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
 
 <span class="c1">// untuk mengakses folder public css</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">"</span><span class="s2">public</span><span class="dl">"</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nf">static</span><span class="p">(</span><span class="dl">"</span><span class="s2">public</span><span class="dl">"</span><span class="p">));</span>
 <span class="c1">// untuk mengakses nilai form</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nf">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}));</span>
 
 <span class="c1">// koneksi ke database</span>
-<span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nf">createConnection</span><span class="p">({</span>
   <span class="na">host</span><span class="p">:</span> <span class="dl">"</span><span class="s2">localhost</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">user</span><span class="p">:</span> <span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">password</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
   <span class="na">database</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dbnodelogin</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">});</span>
 
-<span class="nx">connection</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+<span class="nx">connection</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
 <span class="p">});</span>
 
 <span class="c1">// routing</span>
 
 <span class="c1">// halaman index</span>
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">index.ejs</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">index.ejs</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">// menampilkan list barang</span>
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">SELECT * FROM tbl_barang</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">listbrg.ejs</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">tbl_barang</span><span class="p">:</span> <span class="nx">results</span> <span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">SELECT * FROM tbl_barang</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">listbrg.ejs</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">tbl_barang</span><span class="p">:</span> <span class="nx">results</span> <span class="p">});</span>
   <span class="p">});</span>
 <span class="p">});</span>
 
 <span class="c1">// menuju halaman add barang</span>
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/addbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">addbrg.ejs</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/addbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">addbrg.ejs</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">// add barang dari form</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/createbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/createbrg</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">kd_brg</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">kd_barang</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">nama</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">nama</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">hrg_beli</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_beli</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">hrg_jual</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_jual</span><span class="p">;</span>
-  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span>
     <span class="dl">"</span><span class="s2">INSERT INTO tbl_barang (kd_brg,nama,hrg_beli,hrg_jual) VALUES (?,?,?,?)</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">[</span><span class="nx">kd_brg</span><span class="p">,</span> <span class="nx">nama</span><span class="p">,</span> <span class="nx">hrg_beli</span><span class="p">,</span> <span class="nx">hrg_jual</span><span class="p">],</span>
     <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nf">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">// hapus barang</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/deletebrg/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/deletebrg/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span>
     <span class="dl">"</span><span class="s2">DELETE FROM tbl_barang WHERE id=?</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">[</span><span class="nx">id</span><span class="p">],</span>
     <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nf">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">// menampilkan edit barang</span>
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/editbrg/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/editbrg/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span>
     <span class="dl">"</span><span class="s2">SELECT * FROM tbl_barang WHERE id=?</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">[</span><span class="nx">id</span><span class="p">],</span>
     <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">editbrg.ejs</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">tbl_barang</span><span class="p">:</span> <span class="nx">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">});</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">editbrg.ejs</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">tbl_barang</span><span class="p">:</span> <span class="nx">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">// update barang</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/update/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/update/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">kd_brg</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">kd_barang</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">nama</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">nama</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">hrg_beli</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_beli</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">hrg_jual</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">hrg_jual</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-  <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+  <span class="nx">connection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span>
     <span class="dl">"</span><span class="s2">UPDATE tbl_barang SET kd_brg=?, nama=?, hrg_beli=?, hrg_jual=? WHERE id=?</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">[</span><span class="nx">kd_brg</span><span class="p">,</span> <span class="nx">nama</span><span class="p">,</span> <span class="nx">hrg_beli</span><span class="p">,</span> <span class="nx">hrg_jual</span><span class="p">,</span> <span class="nx">id</span><span class="p">],</span>
     <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nf">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/listbrg</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server berjalan di port </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">port</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server berjalan di port </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">port</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>untuk menampilkan ke halaman list barang, tambah, edit dan hapus barang, buat folder dengan nama <code class="language-plaintext highlighter-rouge">views</code> dan buat 4 file yaitu <code class="language-plaintext highlighter-rouge">index.ejs, addbrg.ejs, editbrg.ejs, listbrg.ejs</code></p>

@@ -6,12 +6,14 @@ title: Dart Hello World.
 Dart adalah bahasa pemrograman yang dikembangkan oleh google dan digunakan di fraamework Flutter
 berikut cara menampilkan "Hello World" di console dengan bahasa dart. kalian juga bisa menggunakan Dart Pad untuk latihan praktek.
 
-```dart
+{% highlight dart %}
+
 void main() {
-  String helloWorld = "Hello World";
-  print(helloWorld);
+String helloWorld = "Hello World";
+print(helloWorld);
 }
-```
+
+{% endhighlight cpp %}
 
 didalam void main() {} tersebut kode akan di eksekusi, dan fungsi print adalah menampilkan di console.
 
