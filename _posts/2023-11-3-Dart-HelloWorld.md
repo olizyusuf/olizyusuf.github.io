@@ -13,7 +13,7 @@ String helloWorld = "Hello World";
 print(helloWorld);
 }
 
-{% endhighlight cpp %}
+{% endhighlight dart %}
 
 didalam void main() {} tersebut kode akan di eksekusi, dan fungsi print adalah menampilkan di console.
 
