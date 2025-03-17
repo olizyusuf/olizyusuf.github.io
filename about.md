@@ -6,17 +6,12 @@ permalink: /about/
 
 ## Nurkholis Yusuf
 
-IT Support Since 2010.
-
-Location Yogyakarta, ID.
-
-Experienced Information Technology Support Technician with a demonstrated history of working in the information technology and services industry. Skilled in Technical Support, Software Implementation, Network, Databases, Point Of Sale (POS) System, Auto ID, and Hardware Support. Strong information technology professional.
-
-Freelance Build Mobile Android App using Flutter.
+Experienced Field Engineer with a proven work history in the services, information technology industry. Skilled in Technical Support, Software Implementation, Databases, Point of Sale (POS) systems, AIDC, and Hardware Support. IT professional since 2013 in the IT Solution company and have side skill for build Android and Web Apps.
 
 ### Skill
 
-- IT Support.
+- Technical Support.
+- Presales and Aftersales Services.
 - Software Implementation.
 - Network.
 - Flutter mobile android.

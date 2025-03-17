@@ -42,3 +42,7 @@ Promo, Member, and Setting Page.
 
 Apps for Counting your stock with master data feature and Scan with your camera or connect to barcode scanner bluetooth or usb cable.
 you can control stock opname or stock in.
+
+### 6. Simple Stock
+
+Apps for collect data items PLU to PDT Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65). This application has been used by Dowa Bag, and demo for KDS.
