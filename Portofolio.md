@@ -38,11 +38,15 @@ App To Do List using FrameWork JavaScript
 Building aplication Member Aplikasi for Supermarket using Flutter.
 Promo, Member, and Setting Page.
 
-### 5. Stock Count
+### 5. Stock Opname
+
+Apps for collect data items PLU with Scan Hardware PDA Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65) or Camera Scan, file export format is .txt. This application has been used by Dowa Bag, and demo for KDS.
+![stock opname]({{ site.baseurl }}/images/stockopname-preview.png)
+
+### 6. Stock Count
 
 Apps for Counting your stock with master data feature and Scan with your camera or connect to barcode scanner bluetooth or usb cable.
-you can control stock opname or stock in.
-
-### 6. Simple Stock
-
-Apps for collect data items PLU to PDT Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65). This application has been used by Dowa Bag, and demo for KDS.
+you can control stock opname or stock in and out. file export format is .txt
+This application for Demo KDS at Retail Segment for handling inbound and outbound items.
+Support PDA Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65).
+![stock count]({{ site.baseurl }}/images/stock-count-preview.png)
