@@ -50,3 +50,8 @@ you can control stock opname or stock in and out. file export format is .txt
 This application for Demo KDS at Retail Segment for handling inbound and outbound items.
 Support PDA Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65).
 ![stock count]({{ site.baseurl }}/images/stock-count-preview.png)
+
+### 7. [Simple Stock App](https://play.google.com/store/apps/details?id=com.simplestockapp.simplestockapp&pcampaignid=web_share)
+
+This application provides input fields for entering names and locations, and Auto can be turned on or off. There are input fields for typing barcodes and quantities. For Data export format use .txt
+![stock count]({{ site.baseurl }}/images/simple-stock-preview.png)
