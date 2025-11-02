@@ -55,3 +55,8 @@ Support PDA Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65).
 
 This application provides input fields for entering names and locations, and Auto can be turned on or off. There are input fields for typing barcodes and quantities. For Data export format use .txt
 ![stock count]({{ site.baseurl }}/images/simple-stock-preview.png)
+
+### 8. Simple Stock Take
+
+This application helps operators in stores to do stock taking at the end of the month, operator input data will be import into their ERP application, this application has been used at the **Outlet Biru Corp** in Yogyakarta.
+![Simple Stock Take]({{ site.baseurl }}/images/ob-stock.png)
