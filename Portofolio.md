@@ -38,7 +38,7 @@ Promo, Member, and Setting Page.
 
 ### 5. Stock Opname
 
-Apps for collect data items PLU with Scan Hardware PDA Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65) or Camera Scan, file export format is .txt. This application has been used by Dowa Bag, and demo for KDS.
+Apps for collect data items PLU with Scan Hardware PDA Android (Urovo DT50s, Honeywell EDA51, Honeywell CK65) or Camera Scan, file export format is .txt. This application has been used by **Dowa Bag** in Yogyakarta, and demo for KDS.
 ![stock opname]({{ site.baseurl }}/images/stockopname-preview.png)
 
 ### 6. Stock Count
