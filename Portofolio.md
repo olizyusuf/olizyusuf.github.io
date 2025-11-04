@@ -6,14 +6,12 @@ permalink: /portofolio/
 
 ## IT Field Engineer.
 
-Responsible for supporting the company's KDS client at all levels as part of a IT Field Engineer. Ensuring that all hardware and software is configured and installed correctly.
+I currently work at PT. Kahar Duta Sarana as a IT field engineer. Ensuring that all hardware and software is configured and installed correctly.
 
 Duties:
 
 - Configure and testing of any new Hardware and Software (Point of Sales and Auto ID).
-- Installing and Operation Windows Desktop and Linux Desktop.
-- Supporting users over the telephone and remote.
-- Travelling to client sites to help with install, repair, deployment, and troubleshooting.
+- Onsite services to help with install, repair, deployment, and troubleshooting.
 
 Documentation : [Click here](http://olizyusuf.github.io/)
 
